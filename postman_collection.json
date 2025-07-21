@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "NinfaGarden API",
+    "_postman_id": "12345678-1234-5678-1234-567812345678",
+    "description": "Colección de pruebas NinfaGarden API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Obtener todos los productos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/productos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos"]
+        }
+      }
+    },
+    {
+      "name": "Crear nuevo producto",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Nueva Planta\",\n  \"descripcion\": \"Descripción de prueba\",\n  \"precio\": 30.5,\n  \"stock\": 25,\n  \"imagenUrl\": \"https://example.com/nueva.jpg\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/productos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos"]
+        }
+      }
+    },
+    {
+      "name": "Crear pedido",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuarioId\": 5,\n  \"items\": [\n    { \"productoId\": 1, \"cantidad\": 2 },\n    { \"productoId\": 9, \"cantidad\": 1 }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/pedidos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "pedidos"]
+        }
+      }
+    },
+    {
+      "name": "Ver pedidos de usuario",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/pedidos/usuario/5",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "pedidos", "usuario", "5"]
+        }
+      }
+    }
+  ]
+}

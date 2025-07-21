@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ninfa Garden</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome CDN -->
+<link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer" />
+  <link rel="icon" href="/img/logoninfa.png" type="image/png" />
+</head>
+
+<body>
+  <header class="d-flex justify-content-between align-items-center p-3 bg-light">
+    <img src="/img/logoninfa.png"
+      width="100"
+      height="100"
+      alt="Ninfa Garden Logo"/>
+    <nav>
+      <ul class="menu d-flex list-unstyled gap-3">
+        <li><a href="#productos" class="text-dark">Productos</a></li>
+        <li><a href="#reseñas" class="text-dark">Reseñas</a></li>
+        <li><a href="#carrito" class="text-dark" id="open-cart">
+          Carrito (<span id="cart-counter-nav">0</span>)</a>
+        </li>
+        <li><a href="#footer" class="text-dark">Redes Sociales</a></li>
+        <li><a href="#historial-pedidos" class="text-dark" id="ver-pedidos">Pedidos</a></li>
+        <li><a href="#" class="text-dark" id="cerrar-sesion">Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="portada text-center p-5">
+      <h1>Ninfa Garden</h1>
+      <p>🌱 Cultiva tu propio paraíso verde: plantas únicas para tu hogar.</p>
+    </section>
+
+<section id="agregar-producto" class="container my-5">
+  <h2 class="text-center mb-4">Agregar Nuevo Producto</h2>
+  <form id="form-agregar-producto" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="prod-nombre" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Categoría</label>
+      <select id="prod-categoria" class="form-select" required>
+        <option value="">Selecciona categoría</option>
+        <option value="Planta">Planta</option>
+        <option value="Herramienta">Herramienta</option>
+      </select>
+    </div>
+    <div id="campo-clima" style="display: none;">
+      <label for="prod-clima">Clima recomendado</label>
+      <input type="text" id="prod-clima" class="form-control">
+    </div>
+    <div id="campo-material" style="display: none;">
+      <label for="prod-material">Material</label>
+      <input type="text" id="prod-material" class="form-control">
+    </div>
+    <div class="col-12">
+      <label class="form-label">Descripción</label>
+      <textarea id="prod-descripcion" class="form-control" rows="3" required></textarea>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Precio ($)</label>
+      <input type="number" step="0.01" class="form-control" id="prod-precio" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Stock</label>
+      <input type="number" class="form-control" id="prod-stock" required>
+    </div>
+    <div class="col-12">
+      <label class="form-label">URL Imagen</label>
+      <input type="url" class="form-control" id="prod-imagen" required>
+    </div>
+    <div class="col-12 text-center">
+      <button type="submit" id="btn-guardar-producto" class="btn btn-success mt-3">Guardar Producto</button>
+    </div>
+  </form>
+</section>
+
+    <section id="productos" class="contenedorCards container my-5">
+      <h2 class="text-center mb-4">Nuestra Colección</h2>
+      <div id="productos-container" class="d-flex flex-wrap justify-content-around gap-3">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1617137968471-d73c4e1ee32e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Monstera Deliciosa"/>
+          <h5>Monstera Deliciosa</h5>
+          <p>La favorita de interiores. Fácil de cuidar y llena de vida.</p>
+          <button class="btn">Añadir al carrito</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1561998331-67415acc4740?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Ficus Lyrata"/>
+          <h5>Ficus Lyrata</h5>
+          <p>Follaje espectacular que transforma cualquier espacio.</p>
+          <button class="btn">Añadir al carrito</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1587736021429-313b2e2c58ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Sansevieria"/>
+          <h5>Sansevieria</h5>
+          <p>Resistente y purificadora, ideal para principiantes.</p>
+          <button class="btn">Añadir al carrito</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="historial-pedidos" class="container my-5">
+    <h2 class="text-center mb-4">Historial de Pedidos</h2>
+    <div id="pedidos-container"></div>
+    </section>
+
+    <section id="reseñas" class="container my-5">
+      <h2 class="text-center mb-4">Reseñas de Nuestros Clientes</h2>
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="card-img-top" alt="Cliente 1"/>
+            <div class="card-body">
+              <h5 class="card-title">María G.</h5>
+              <p class="card-text">“Encantada con mis plantas, llegaron sanas y hermosas. ¡Repetiré pronto!”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="card-img-top" alt="Cliente 2"/>
+            <div class="card-body">
+              <h5 class="card-title">Luis F.</h5>
+              <p class="card-text">“El mejor servicio online para plantas. Atención y calidad top.”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="card-img-top" alt="Cliente 3"/>
+            <div class="card-body">
+              <h5 class="card-title">Elena R.</h5>
+              <p class="card-text">“Mi hogar es un oasis gracias a Ninfa Garden. ¡Gracias por tanto verde!”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Carrito <span id="cart-counter" class="cart-counter">0</span></h3>
+    </div>
+
+    <div class="cart-content">
+      <div id="carrito-items" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: $<span id="carrito-total">0</span></strong>
+        </div>
+        <div class="cart-actions">
+          <button id="vaciar-carrito" class="btn btn-danger btn-sm">Vaciar</button>
+          <button id="realizar-compra" class="btn btn-success">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <div class="modal fade" id="compraExitosaModal" tabindex="-1" aria-labelledby="compraExitosaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="compraExitosaModalLabel">¡Compra Realizada!</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="mb-3">
+            <div class="text-success" style="font-size: 4rem">✓</div>
+          </div>
+          <h4>¡Tu compra se realizó exitosamente!</h4>
+          <p class="text-muted">Pronto recibirás un correo de confirmación con los detalles de tu pedido.</p>
+          <p><strong>Total pagado: $<span id="modal-total">0</span></strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continuar Comprando</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <footer>
+        <div class="footer-contenido" id="footer">
+            <p>&copy; 2024 Ninfa-Garden. Todos los derechos reservados.</p>
+    
+            <!-- Redes sociales -->
+            <div class="redes-sociales">
+                <a href="https://www.facebook.com/ninfagarden" target="_blank" class="icono-social">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/ninfa_garden29?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="icono-social">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/ninfagarden" target="_blank" class="icono-social">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+    
+            <!-- Contacto o información adicional (opcional) -->
+            <div class="informacion-footer">
+                <p>Contacto: info@ninfagarden.com</p>
+                <p>Visítanos en nuestras redes para más información.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script>
+  document.getElementById("prod-categoria").addEventListener("change", (e) => {
+    const categoria = e.target.value;
+    if (categoria === "Planta") {
+      document.getElementById("campo-clima").style.display = "block";
+      document.getElementById("campo-material").style.display = "none";
+    } else if (categoria === "Herramienta") {
+      document.getElementById("campo-clima").style.display = "none";
+      document.getElementById("campo-material").style.display = "block";
+    } else {
+      document.getElementById("campo-clima").style.display = "none";
+      document.getElementById("campo-material").style.display = "none";
+    }
+  });
+</script>
+</body>
+</html>
+
