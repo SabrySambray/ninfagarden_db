@@ -8,6 +8,13 @@ DROP TABLE IF EXISTS linea_pedido;
 DROP TABLE IF EXISTS pedido;
 DROP TABLE IF EXISTS producto;
 
+-- Create hibernate_sequences table if using custom sequences
+CREATE TABLE IF NOT EXISTS hibernate_sequences (
+    sequence_name VARCHAR(255) NOT NULL,
+    next_val BIGINT,
+    PRIMARY KEY (sequence_name)
+);
+
 -- --------------------------------------------------
 -- Tabla base: producto
 -- --------------------------------------------------
