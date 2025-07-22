@@ -15,7 +15,6 @@ public class Pedido {
     private Long usuarioId;
     private double total;
     private String estado;
-    private LocalDateTime fecha;
 
     @OneToMany(
         cascade = CascadeType.ALL,
@@ -37,9 +36,6 @@ public class Pedido {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
-
-    public LocalDateTime getFecha() { return fecha; }
-    public void setFecha(LocalDateTime fecha) { this.fecha = fecha; }
 
     public List<LineaPedido> getItems() { return items; }
     public void setItems(List<LineaPedido> items) { this.items = items; }
